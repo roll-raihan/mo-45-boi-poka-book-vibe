@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router';
 import { useParams } from 'react-router';
+import { addToStoreDB } from '../utility/addToDB';
 
 const BookDetails = () => {
     const { id } = useParams();
@@ -11,6 +12,16 @@ const BookDetails = () => {
     const singleBook = data.find(book => book.bookId === bookId);
     // console.log(singleBook);
     const { bookName, image, author, publisher, rating, category, tags, totalPages, yearOfPublishing, review } = singleBook;
+
+    const handleMarkAsRead = id => {
+        // store with id
+        // where to store
+        // array or collection
+        // if data is already stored then alert
+        // if not then push the array or collection
+
+        addToStoreDB(id);
+    }
 
     return (
         <div className='flex flex-col md:flex-row m-5 gap-5'>
@@ -27,7 +38,7 @@ const BookDetails = () => {
                 <div className='flex gap-5 mt-2 mb-4 items-center'>
                     <span className='font-bold'>Tag:</span>
                     {
-                        tags.map((tag, index) => <button key={index} className='rounded-2xl p-1 text-green-500 border-green-500 border'>{tag}</button>)
+                        tags.map((tag, index) => <button key={index} className='rounded-2xl p-2 text-green-500 border-green-500 border'>{tag}</button>)
                     }
                 </div>
                 <div className='border-t-1'></div>
@@ -48,8 +59,8 @@ const BookDetails = () => {
                     <p className='font-bold'>{rating}</p>
                 </div>
                 <div className='flex gap-5 mt-2'>
-                    <button className='btn btn-neutral'>Mark as Read</button>
-                    <button className='btn btn-primary'>Add to Wishlist</button>
+                    <button onClick={() => handleMarkAsRead(id)} className='btn btn-neutral'>Mark As Read</button>
+                    <button className='btn btn-primary'>Add To Wishlist</button>
                 </div>
             </div>
         </div>
