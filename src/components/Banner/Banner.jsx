@@ -1,11 +1,10 @@
 import React from 'react';
 import bookImg from '../../assets/books.jpg'
 
-// https://raw.githubusercontent.com/ProgrammingHero1/boi-poka-Book-Vibe-Resources/refs/heads/main/data/booksData.json
 
 const Banner = () => {
     return (
-        <div className="hero bg-base-200 min-h-screen rounded-2xl">
+        <div className="hero bg-base-200 rounded-2xl">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <img
                     src={bookImg}
