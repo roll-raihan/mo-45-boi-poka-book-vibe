@@ -2,6 +2,11 @@ import React from 'react';
 import { useLoaderData } from 'react-router';
 import { useParams } from 'react-router';
 import { addToStoreDB } from '../utility/addToDB';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import { ToastContainer } from 'react-toastify';
+
+const MySwal = withReactContent(Swal);
 
 const BookDetails = () => {
     const { id } = useParams();
@@ -20,6 +25,13 @@ const BookDetails = () => {
         // if data is already stored then alert
         // if not then push the array or collection
 
+        MySwal.fire({
+            title: "Good job!",
+            text: "You clicked the button!",
+            icon: "success"
+        });
+
+
         addToStoreDB(id);
     }
 
@@ -28,6 +40,7 @@ const BookDetails = () => {
             <div className='flex-1 p-12 bg-pink-100 rounded-2xl'>
                 <img className='w-[400px] h-[500px] mx-auto' src={image} alt="" />
             </div>
+            <ToastContainer></ToastContainer>
             <div className='flex-1 p-5'>
                 <h1 className='text-3xl font-bold  mb-2'>{bookName}</h1>
                 <p className='mb-3 font-bold'>By: {author}</p>
