@@ -1,24 +1,32 @@
 import React from 'react';
+import { FaStarHalfAlt } from "react-icons/fa";
 
 const Book = ({ singleBook }) => {
-    const { bookName, author, image } = singleBook;
+    const { bookName, author, image, category, rating, tags, yearOfPublishing } = singleBook;
 
     return (
-        <div className="card bg-base-100 max-w-[375px] max-h-[482px] shadow-sm p-2 border">
-            <figure  className='max-w-[320px] max-h-[230px]'>
-                <img className='max-w-[135px] max-h-[165px]'
+        <div className="card bg-base-100 w-96 shadow-sm p-3 border
+        ">
+            <figure className='w-full rounded-xl mx-auto bg-gray-300 p-4'>
+                <img className='h-[165px]'
                     src={image}
                     alt="Shoes" />
             </figure>
+            <div className='flex justify-stretch gap-10 mt-2 -mb-3 ml-6'>
+                {
+                    tags.map(tag => <button className='rounded-2xl p-1 text-green-500 border-green-500 border'>{tag}</button>)
+                }
+            </div>
             <div className="card-body">
                 <h2 className="card-title">
                     {bookName}
-                    <div className="badge badge-secondary">NEW</div>
+                    <div className="badge badge-secondary">({yearOfPublishing})</div>
                 </h2>
                 <p>By: {author}</p>
-                <div className="card-actions justify-end">
-                    <div className="badge badge-outline">Fiction</div>
-                    <div className="badge badge-outline">5.00</div>
+                <div className='border-t-1 border-dashed'></div>
+                <div className="card-actions justify-between mt-2 -mb-5">
+                    <div className="badge badge-outline">{category}</div>
+                    <div className="badge badge-outline">{rating} <FaStarHalfAlt /></div>
                 </div>
             </div>
         </div>

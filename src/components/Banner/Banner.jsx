@@ -4,7 +4,7 @@ import bookImg from '../../assets/books.jpg'
 
 const Banner = () => {
     return (
-        <div className="hero bg-base-200 rounded-2xl">
+        <div className="hero bg-base-200 rounded-2xl mt-5">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <img
                     src={bookImg}
