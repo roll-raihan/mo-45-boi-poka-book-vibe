@@ -23,6 +23,15 @@ const ListedBook = () => {
     const [sort, setSort] = useState("");
     const handleSort = (type) => {
         setSort(type);
+        if (type === "pages") {
+            const sortedByPages = [...readList].sort((a, b) => a.totalPages - b.totalPages);
+            setReadList(sortedByPages);
+            // console.log(sortedByPages);
+        }
+        if (type === "rating") {
+            const sortedByRating = [...readList].sort((a, b) => a.rating - b.rating);
+            setReadList(sortedByRating);
+        }
     }
 
     return (
@@ -32,8 +41,8 @@ const ListedBook = () => {
             <div className="dropdown dropdown-center">
                 <div tabIndex={0} role="button" className="btn m-1 btn-success">Sort By : {sort ? sort : ""} ⬇️</div>
                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                    <li><a onClick={() => handleSort("Pages")}>Pages</a></li>
-                    <li><a onClick={() => handleSort("Rating")}>Rating</a></li>
+                    <li><a onClick={() => handleSort("pages")}>Pages</a></li>
+                    <li><a onClick={() => handleSort("rating")}>Rating</a></li>
                 </ul>
             </div>
 
